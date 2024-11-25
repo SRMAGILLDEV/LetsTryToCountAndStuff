@@ -1,54 +1,4 @@
-﻿#region CODE FROM COPILOT NOT USING
-//using System;
-//using System.Collections;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text.RegularExpressions;
-
-
-//public class UniqueValueSorter
-//{
-//    public int[] GetUniqueValuesByFrequency(int[] inputArray)
-//    {
-//        // Group the numbers and count their frequencies
-//        var frequencyMap = inputArray
-//            .GroupBy(number => number)
-//            .Select(group => new { Value = group.Key, Count = group.Count() })
-//            .ToList();
-
-//        // Sort by frequency first, then by value
-//        var sortedByFrequency = frequencyMap
-//            .OrderBy(item => item.Count)
-//            .ThenBy(item => item.Value)
-//            .Select(item => item.Value)
-//            .ToArray();
-//        int[] reversedList = sortedByFrequency.Reverse().ToArray();
-//        return reversedList;
-//    }
-//}
-
-// Example usage:
-//class Program
-//{
-//    public static void Main()
-//    {
-//var sorter = new UniqueValueSorter();
-//int[] inputArray = new int[] { 0, 0, 1, 3, 2, 3, 2, 1, 1, 0 };
-
-//int[] uniqueValuesByFrequency = sorter.GetUniqueValuesByFrequency(inputArray);
-
-//Console.WriteLine("Unique values sorted by frequency (and value):");
-//foreach (var value in uniqueValuesByFrequency)
-//{
-//    Console.WriteLine(value);
-//}
-//    }
-//}
-#endregion
-
-using System.Collections.Specialized;
-using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
+﻿using System.Globalization;
 using System.Text;
 
 class Program
@@ -64,13 +14,21 @@ class Program
         MessagingAndOutput.CheckPalindromeMSG();
 
         MessagingAndOutput.ReverseStringsInASentanceMSG();
-        Console.ForegroundColor = ConsoleColor.Green;
-        string newSentance = TestMethods.ReverseStringsInASentance();
-        Console.WriteLine($"   {string.Join("", newSentance)}");
+        //Console.ForegroundColor = ConsoleColor.Green;
+        TestMethods.ReverseNewMethod(GetDataForNewClassTesting.nextSentence);
 
+        ReverseStrings.ReverseWordOrder(GetDataForNewClassTesting.wordListFromSentance);
+        //string newSentance = GetDataForNewClassTesting.nextSentence;
+        //Console.WriteLine($"   {string.Join("", newSentance)}");
+
+        MessagingAndOutput.DrawATriangleMSG();
         TestMethods.GetStarsAndSpaces(5);
-        Console.ForegroundColor = ConsoleColor.White;
-        TestMethods.Something();
+
+        MessagingAndOutput.ReverseMSG();
+        Console.WriteLine("what is it doing now");
+        Console.ReadLine();
+
+        TestMethods.CheckStatesEvenOrOdd();
 
         Console.ReadLine();
     }
@@ -114,6 +72,7 @@ public static class MessagingAndOutput
         Console.WriteLine($"INPUT: {string.Join("", (string.Join(" ", GetDataForNewClassTesting.randNumList)))}");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("##########################################");
+        Console.ForegroundColor = ConsoleColor.White;
     }
 
     internal static void AddTheEvensMSG()
@@ -127,6 +86,7 @@ public static class MessagingAndOutput
         Console.WriteLine($"INPUT: {string.Join("", GetDataForNewClassTesting.randNumList)}");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("##########################################");
+        Console.ForegroundColor = ConsoleColor.White;
     }
 
     internal static void ReverseStringsInASentanceMSG()
@@ -142,11 +102,12 @@ public static class MessagingAndOutput
         Console.WriteLine($"INPUT: {GetDataForNewClassTesting.wordListFromSentance}");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("##########################################");
+        Console.ForegroundColor = ConsoleColor.White;
     }
 
     internal static void ReverseMSG()
     {
-        string result = TestMethods.ReverseNewMethod();
+        //string result = TestMethods.ReverseNewMethod(GetDataForNewClassTesting.nextSentence);
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("##########################################");
         Console.WriteLine("  THIS METHOD WILL TAKE AN INT ARRAY");
@@ -154,22 +115,22 @@ public static class MessagingAndOutput
         Console.WriteLine(" NEW SENTENCE THAT WILL HAVE EVERY OTHER");
         Console.WriteLine("     WORD WRITTEN IN REVERSE");
         Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine($"INPUT: {string.Join("", GetDataForNewClassTesting.wordListFromSentance)}");
+        Console.WriteLine($"INPUT: {string.Join("", GetDataForNewClassTesting.nextSentence)}");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("##########################################");
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine(result);
+        //Console.WriteLine(result);
         Console.WriteLine(" ");
         Console.ForegroundColor = ConsoleColor.White;
     }
 
-    internal static void stuff()
+    internal static void DrawATriangleMSG()
     {
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("#####################################################");
         Console.WriteLine("  TRY TO MAKE THE TRIANGLE WITH * AND SPACES  ");
         Console.WriteLine("#####################################################");
-        Console.ForegroundColor = ConsoleColor.Green;
+        Console.ForegroundColor = ConsoleColor.White;
     }
 
 }
@@ -184,10 +145,10 @@ public static class GetDataForNewClassTesting
 
 public static class TestMethods
 {
-    internal static string ReverseNewMethod()
+    internal static string ReverseNewMethod(string tmpSentance)
     {
         Console.WriteLine(" ");
-        string[] sepSent = ReverseStringsInASentance().Split(" ");
+        string[] sepSent = ReverseStringsInASentance(tmpSentance).Split(" ");
         string result = string.Empty;
 
         for (int i = 0; i < sepSent.Length; i++)
@@ -204,27 +165,17 @@ public static class TestMethods
                 result += $"{tmp} ";
             }
         }
-        //Console.ForegroundColor = ConsoleColor.Yellow;
-        //Console.WriteLine("##########################################");
-        //Console.WriteLine("  THIS METHOD WILL TAKE AN INT ARRAY");
-        //Console.WriteLine(" AND FIRST USE A FOR LOOP TO CREATE A ");
-        //Console.WriteLine(" NEW SENTENCE THAT WILL HAVE EVERY OTHER");
-        //Console.WriteLine("     WORD WRITTEN IN REVERSE");
-        //Console.ForegroundColor = ConsoleColor.Cyan;
-        //Console.WriteLine($"INPUT: {string.Join("", sepSent)}");
-        //Console.ForegroundColor = ConsoleColor.Yellow;
-        //Console.WriteLine("##########################################");
-        //Console.ForegroundColor = ConsoleColor.Green;
-        //Console.WriteLine(result);
-        //Console.WriteLine(" ");
-        //Console.ForegroundColor = ConsoleColor.White;
+
+        Console.WriteLine(result);
+        Console.WriteLine("test what happened now");
+        Console.ReadLine();
         return result;
     }
 
-    internal static string ReverseStringsInASentance()
+    internal static string ReverseStringsInASentance(string tmpWordsList)
     {
         string customWordsList = string.Empty;
-        var wordsToReorder = GetDataForNewClassTesting.wordListFromSentance
+        var wordsToReorder = tmpWordsList
            .Split()
            .Select(x => string.Concat(x.ToElements().Reverse()));
         foreach (string word in wordsToReorder)
@@ -286,11 +237,12 @@ public static class TestMethods
         Console.WriteLine(" ");
     }
 
-    internal static void Something()
+    internal static void CheckStatesEvenOrOdd()
     {
         string[] states = { "California", "New York", "Vermont", "Florida", "california" };
         int statesCount = states.Length;
         int caliCount = 0;
+        bool isOdd = false;
         foreach (string state in states)
         {
             if (state.ToLower().Equals("california"))
@@ -299,9 +251,7 @@ public static class TestMethods
             }
         }
 
-        bool isOdd = false;
-
-        isOdd = caliCount % 2 == 0;
+        isOdd = caliCount % 2 != 0;
 
         Console.WriteLine($"states count = {statesCount} and california count = {caliCount} and is it odd :: {isOdd}");
     }

@@ -12,3 +12,4 @@ C:\Users\s4tAnonymous\source\repos\LetsTryToCountAndStuff\LetsTryToCountAndStuff
 C:\Users\s4tAnonymous\source\repos\LetsTryToCountAndStuff\LetsTryToCountAndStuff\obj\Debug\net6.0\LetsTryToCountAndStuff.pdb
 C:\Users\s4tAnonymous\source\repos\LetsTryToCountAndStuff\LetsTryToCountAndStuff\obj\Debug\net6.0\LetsTryToCountAndStuff.genruntimeconfig.cache
 C:\Users\s4tAnonymous\source\repos\LetsTryToCountAndStuff\LetsTryToCountAndStuff\obj\Debug\net6.0\ref\LetsTryToCountAndStuff.dll
+C:\Users\s4tAnonymous\source\repos\LetsTryToCountAndStuff\LetsTryToCountAndStuff\obj\Debug\net6.0\LetsTryToCountAndStuff.sourcelink.json
